@@ -1,0 +1,95 @@
+ARQUITECTURA DE SOFTWARE
+TALLER 6 - CLEAN ARCHITECTURE
+
+DESCRIPCIÓN DEL TRABAJO
+El presente taller tiene como objetivo aplicar los principios fundamentales de
+Arquitectura Limpia (Clean Architecture) mediante la construcción e integración de
+tres aplicaciones: un proyecto frontend desarrollado con Angular, un backend
+desarrollado con Node.js y un backend desarrollado con Spring Boot.
+El estudiante deberá implementar el flujo completo de Arquitectura Limpia en las
+tres tecnologías, estableciendo una separación clara entre entidades, casos de uso,
+interfaces, repositorios, implementaciones y componentes de infraestructura.
+Este trabajo permitirá evaluar la capacidad del estudiante para:
+
+● Entidades o modelos.
+● Casos de uso.
+● Interfaces y contratos.
+● Repositorios.
+● Implementaciones de repositorios.
+● Servicios e infraestructura necesaria.
+● Componentes y vistas.
+● Renderizado de la información obtenida desde el backend.
+NOTA: Enviar un archivo PDF con el link del repositorio de GitHub.
+
+REQUISITOS DE ENTREGA
+El trabajo deberá cumplir obligatoriamente con los siguientes criterios:
+● Proyecto Angular funcionando.
+● Proyecto Node.js funcionando.
+● Proyecto Spring Boot funcionando.
+● Pruebas unitarias de Angular con cobertura superior al 90%.
+● Documentación de Angular mediante Compodoc.
+● Documentación técnica general de los backends.
+● Documentación Swagger/OpenAPI de las APIs.
+● README con instrucciones de ejecución.
+● Repositorio publicado en GitHub.
+● Uso de estándares de commits.
+● Entrega de PDF con el enlace al repositorio.
+El incumplimiento de cualquiera de estos criterios podrá afectar la calificación final
+del trabajo.
+
+CLEAN ARCHITECTURE
+1. Clonar el repositorio base.
+● Clonar o realizar un Fork de los repositorios proporcionados.
+● Repositorio Taller Angular Clean Architecture
+● Repositorio Taller NodeJS Clean Architecture
+● Repositorio Taller SpringBoot Clean Architecture
+● Seguir las instrucciones de cada readme.md para ejecutar cada proyecto.
+
+2. Clean Architecture Angular
+● Crear los tres módulos funcionales.
+● Configurar el Navbar con los tres módulos.
+● Configurar las rutas de cada módulo.
+● Crear los modelos y entidades necesarios.
+● Crear las interfaces de los repositorios.
+● Crear los casos de uso correspondientes.
+● Crear las implementaciones de los repositorios.
+● Crear los componentes y vistas necesarios.
+● Configurar los Providers para seleccionar la implementación de Node.js o
+Spring Boot.
+● Verificar que los componentes utilicen los casos de uso y no directamente los
+servicios o APIs.
+
+3. Clean Architecture NodeJS
+● Crear los tres módulos funcionales.
+● Crear las APIs necesarias para cada módulo.
+● Crear los modelos y entidades.
+● Crear las interfaces de los repositorios.
+● Crear casos de uso.
+● Crear las implementaciones de los repositorios.
+● Configurar la inyección de dependencias de las implementaciones.
+● Configurar los repositorios mediante el mecanismo definido para la
+composición global de la aplicación.
+● Documentar las APIs mediante Swagger.
+
+4. Clean Architecture SpringBoot
+● Crear los tres módulos funcionales.
+● Crear las APIs necesarias para cada módulo.
+● Crear los modelos y entidades.
+● Crear las interfaces de los repositorios.
+● Crear casos de uso.
+● Crear las implementaciones de los repositorios.
+● Configurar la inyección de dependencias de las implementaciones.
+● Configurar los repositorios mediante el mecanismo de inyección de
+dependencias de Spring Boot.
+● Documentar las APIs mediante Swagger.
+
+5. Integración
+● Conectar Angular con el backend de Node.js.
+● Verificar el funcionamiento de los tres módulos con Node.js.
+● Cambiar la implementación mediante Providers.
+● Conectar Angular con Spring Boot.
+● Verificar el funcionamiento de los tres módulos con Spring Boot.
+● Comprobar que el cambio de backend no requiera modificar los casos de uso
+ni los componentes.
+● Verificar que las APIs de ambos backends respeten los contratos y
+estructuras de datos requeridos por Angular.

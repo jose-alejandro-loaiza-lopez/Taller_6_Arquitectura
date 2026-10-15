@@ -1,0 +1,42 @@
+# =========================================================
+#  Monorepo Taller 6 - Clean Architecture
+#  .gitignore raíz (aplica a todo el monorepo)
+# =========================================================
+
+# Dependencias
+node_modules/
+
+# Salidas de build / compilación
+dist/
+build/
+out/
+out-tsc/
+
+# Cobertura de pruebas
+coverage/
+
+# Documentación generada (Compodoc)
+documentation/
+
+# Cachés de Angular y Gradle
+.angular/
+.gradle/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# IDEs / editores
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
