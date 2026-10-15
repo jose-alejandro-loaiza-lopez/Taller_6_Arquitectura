@@ -168,6 +168,9 @@ Debe mostrar: `Tomcat started on port 8080 (http) with context path '/api'`.
 - Ejemplos:
   - <http://localhost:8080/api/users/5>
   - <http://localhost:8080/api/products/5>
+  - <http://localhost:8080/api/reviews/5>
+  - <http://localhost:8080/api/ratings/5>
+  - <http://localhost:8080/api/comments/5>
 
 ---
 
@@ -229,6 +232,49 @@ export const environment = {
 
 ---
 
+## 🧩 Integración Angular ↔ Backends
+
+La integración se logra **solo** cambiando los *providers* (`app.config.ts`); ni
+los **casos de uso** ni los **componentes** se modifican. El frontend consume
+siempre los mismos contratos de dominio a través de los casos de uso, y la
+infraestructura HTTP (`DataService`) direcciona cada petición al backend activo.
+
+```
+Componente ─▶ Caso de uso ─▶ Repository (contrato) ─▶ Impl (Node | Spring)
+                                                          │
+                                          DataService ────┴──▶ HTTP 3000 / 8080
+```
+
+### Contratos y estructuras de datos
+
+Ambos backends exponen exactamente la misma estructura JSON que esperan los
+modelos de Angular:
+
+| Módulo | Endpoint (Node y Spring) | Estructura JSON |
+| --- | --- | --- |
+| Usuarios | `GET /api/users/{count}` | `{ id, name, lastName, age, email, engineering }` |
+| Productos | `GET /api/products/{count}` | `{ id, name, category, price }` |
+| Reseñas | `GET /api/reviews/{count}` | `{ id, reviewer, product, comment, status }` |
+| Calificaciones | `GET /api/ratings/{count}` | `{ id, rater, product, score, level }` |
+| Comentarios | `GET /api/comments/{count}` | `{ id, author, subject, message, type }` |
+
+> Node.js responde con **201** y Spring Boot con **200**; en ambos casos el
+> cuerpo es un **arreglo JSON** que `HttpClient` deserializa al modelo de Angular.
+
+### Verificación realizada
+
+1. **Node.js** (`:3000`): se comprobaron los cinco endpoints con respuestas que
+   respetan los contratos.
+2. **Spring Boot** (`:8080`): se comprobaron los cinco endpoints y la
+   documentación OpenAPI generada (`/api/v3/api-docs`).
+3. **Angular**: la suite `data.service.spec.ts` valida que las 10 llamadas HTTP
+   (5 módulos × 2 backends) apuntan a la URL y método correctos.
+4. **Cambio de backend**: al alternar los *providers* la aplicación sigue
+   compilando y las pruebas unitarias (100 % de cobertura) siguen pasando, sin
+   tocar casos de uso ni componentes.
+
+---
+
 ## 🧪 Pruebas y documentación
 
 ### Pruebas unitarias + cobertura (Angular)
@@ -277,7 +323,11 @@ Genera la documentación en `documentation/` (ábrela con un servidor local, p. 
 | --- | --- | --- |
 | GET | `/api/users/{countUsers}` | Lista de usuarios |
 | GET | `/api/products/{countProducts}` | Lista de productos |
+| GET | `/api/reviews/{countReviews}` | Lista de reseñas |
+| GET | `/api/ratings/{countRatings}` | Lista de calificaciones |
+| GET | `/api/comments/{countComments}` | Lista de comentarios |
 | GET | `/api/swagger-ui/index.html` | Documentación Swagger UI |
+| GET | `/api/v3/api-docs` | Documentación OpenAPI JSON |
 
 ---
 
