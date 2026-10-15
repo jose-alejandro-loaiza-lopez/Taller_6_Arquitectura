@@ -1,0 +1,27 @@
+<table class="table table-striped border">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Revisor</th>
+			<th scope="col">Producto</th>
+			<th scope="col">Comentario</th>
+			<th scope="col">Estado</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (review of reviews; track review) {
+			<tr>
+				<th scope="row">{{ review.id }}</th>
+				<td>{{ review.reviewer }}</td>
+				<td>{{ review.product }}</td>
+				<td>{{ review.comment }}</td>
+				<td>
+					<dsb-badge-atom
+						[text]="review.status"
+						[type]="statusMap[review.status]" >
+					</dsb-badge-atom>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

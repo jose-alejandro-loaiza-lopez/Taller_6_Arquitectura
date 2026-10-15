@@ -1,0 +1,15 @@
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando Comentarios..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" text="Error al Cargar los Comentarios" ></app-alert>
+    }
+
+    @case('success'){
+        <app-comments-table [comments]="comments" ></app-comments-table>
+    }
+
+}

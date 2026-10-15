@@ -1,0 +1,27 @@
+<table class="table table-striped border">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Autor</th>
+			<th scope="col">Asunto</th>
+			<th scope="col">Mensaje</th>
+			<th scope="col">Tipo</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (comment of comments; track comment) {
+			<tr>
+				<th scope="row">{{ comment.id }}</th>
+				<td>{{ comment.author }}</td>
+				<td>{{ comment.subject }}</td>
+				<td>{{ comment.message }}</td>
+				<td>
+					<dsb-badge-atom
+						[text]="comment.type"
+						[type]="typeMap[comment.type]" >
+					</dsb-badge-atom>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

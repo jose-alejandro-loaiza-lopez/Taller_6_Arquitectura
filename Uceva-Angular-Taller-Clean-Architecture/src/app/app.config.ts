@@ -1,0 +1,106 @@
+import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { ProductRepository } from './core/domain/repositories/product.repository';
+import { UserRepository } from './core/domain/repositories/user.repository';
+import { ReviewRepository } from './core/domain/repositories/review.repository';
+import { RatingRepository } from './core/domain/repositories/rating.repository';
+import { CommentRepository } from './core/domain/repositories/comment.repository';
+import { ProductNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/product-node.repository.impl';
+import { UserNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/user-node.repository.impl';
+import { ReviewNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/review-node.repository.impl';
+import { RatingNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/rating-node.repository.impl';
+import { CommentNodeRepositoryImpl } from './core/infrastructure/repositories/node-implementation/comment-node.repository.impl';
+import { UserSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/user-springboot.repository.impl';
+import { ProductSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/product-springboot.repository.impl';
+import { ReviewSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/review-springboot.repository.impl';
+import { RatingSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/rating-springboot.repository.impl';
+import { CommentSpringBootRepositoryImpl } from './core/infrastructure/repositories/springboot-implementation/comment-springboot.repository.impl';
+import { UserLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/user-local.repository.impl';
+import { ProductLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/product-local.repository.impl';
+import { ReviewLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/review-local.repository.impl';
+import { RatingLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/rating-local.repository.impl';
+import { CommentLocalRepositoryImpl } from './core/infrastructure/repositories/local-implementation/comment-local.repository.impl';
+
+/**
+ * Configuración principal de la aplicación Angular.
+ *
+ * @remarks
+ * Este objeto define los *providers* globales utilizados
+ * en el arranque de la aplicación mediante la API
+ * `bootstrapApplication`.
+ *
+ * Incluye:
+ * - Manejo global de errores del navegador
+ * - Configuración de detección de cambios
+ * - Sistema de enrutamiento
+ * - Cliente HTTP con interceptores
+ *
+ * @see {@link bootstrapApplication}
+ */
+export const appConfig: ApplicationConfig = {
+
+  /**
+   * Proveedores globales de la aplicación.
+   *
+   * @remarks
+   * Se registran servicios y configuraciones esenciales
+   * que estarán disponibles en toda la aplicación.
+   */
+  providers: [
+
+    //Local Providers
+    { provide: UserRepository, useClass: UserLocalRepositoryImpl },
+    { provide: ProductRepository, useClass: ProductLocalRepositoryImpl },
+    { provide: ReviewRepository, useClass: ReviewLocalRepositoryImpl },
+    { provide: RatingRepository, useClass: RatingLocalRepositoryImpl },
+    { provide: CommentRepository, useClass: CommentLocalRepositoryImpl },
+    
+    //Node Providers
+    //{ provide: UserRepository, useClass: UserNodeRepositoryImpl },
+    //{ provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
+    //{ provide: ReviewRepository, useClass: ReviewNodeRepositoryImpl },
+    //{ provide: RatingRepository, useClass: RatingNodeRepositoryImpl },
+    //{ provide: CommentRepository, useClass: CommentNodeRepositoryImpl },
+
+    //SpringBoot Providers
+    //{ provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
+    //{ provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
+    //{ provide: ReviewRepository, useClass: ReviewSpringBootRepositoryImpl },
+    //{ provide: RatingRepository, useClass: RatingSpringBootRepositoryImpl },
+    //{ provide: CommentRepository, useClass: CommentSpringBootRepositoryImpl },
+
+    /**
+     * Proveedor de listeners globales de errores del navegador.
+     *
+     * @remarks
+     * Captura errores no controlados y eventos globales,
+     * permitiendo un manejo centralizado de excepciones.
+     */
+    provideBrowserGlobalErrorListeners(),
+
+    /**
+     * Configuración de la detección de cambios basada en Zone.js.
+     *
+     * @remarks
+     * `eventCoalescing: true` agrupa múltiples eventos en un
+     * solo ciclo de detección de cambios, mejorando
+     * el rendimiento de la aplicación.
+     */
+    provideZoneChangeDetection({ eventCoalescing: true }),
+
+    /**
+     * Proveedor del sistema de enrutamiento.
+     *
+     * @remarks
+     * Registra las rutas definidas en `routes`
+     * para la navegación de la aplicación.
+     *
+     * @see {@link routes}
+     */
+    provideRouter(routes),
+
+    provideHttpClient(),
+  ]
+};

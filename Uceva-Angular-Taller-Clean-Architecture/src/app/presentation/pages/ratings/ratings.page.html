@@ -1,0 +1,15 @@
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando Calificaciones..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" text="Error al Cargar las Calificaciones" ></app-alert>
+    }
+
+    @case('success'){
+        <app-ratings-table [ratings]="ratings" ></app-ratings-table>
+    }
+
+}

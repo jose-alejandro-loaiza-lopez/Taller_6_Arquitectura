@@ -1,0 +1,27 @@
+<table class="table table-striped border">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Calificador</th>
+			<th scope="col">Producto</th>
+			<th scope="col">Puntaje</th>
+			<th scope="col">Nivel</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (rating of ratings; track rating) {
+			<tr>
+				<th scope="row">{{ rating.id }}</th>
+				<td>{{ rating.rater }}</td>
+				<td>{{ rating.product }}</td>
+				<td>{{ rating.score }}</td>
+				<td>
+					<dsb-badge-atom
+						[text]="rating.level"
+						[type]="levelMap[rating.level]" >
+					</dsb-badge-atom>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
