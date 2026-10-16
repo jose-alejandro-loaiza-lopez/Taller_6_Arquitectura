@@ -102,7 +102,32 @@ Los tres proyectos se ejecutan en **terminales separadas** (o en segundo plano),
 
 ---
 
-## 🚀 Tutorial de ejecución
+## ⚡ Arranque automatizado (raíz del monorepo)
+
+El `package.json` en la **raíz** del monorepo automatiza todo con `concurrently` y `wait-on`,
+igual que el proyecto de microfrontends. Un solo comando levanta los tres proyectos:
+
+```bash
+npm install     # instala la raíz y, vía postinstall, las deps de Node y Angular
+npm start       # levanta Node (:3000), Spring Boot (:8080) y Angular (:4200)
+```
+
+`start:angular` espera (`wait-on`) a que Node (`/api/docs`) y Spring Boot
+(`/api/swagger-ui/index.html`) estén listos antes de arrancar el frontend. Otros scripts disponibles:
+
+| Script | Acción |
+| --- | --- |
+| `npm run install:all` | Instala dependencias de Node y Angular |
+| `npm start` | Arranca Node + Spring Boot + Angular en paralelo |
+| `npm run build` | Compila el frontend Angular |
+| `npm test` | Pruebas con cobertura (Angular) |
+| `npm run compodoc` | Genera la documentación de Angular |
+
+> En Windows el backend Spring Boot se lanza con `gradlew.bat bootRun`.
+
+---
+
+## 🚀 Tutorial de ejecución (manual)
 
 ### Paso 0 — Clonar el monorepo
 
