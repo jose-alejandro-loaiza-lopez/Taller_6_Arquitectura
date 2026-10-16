@@ -174,7 +174,7 @@ Cobertura actual: **100 %** (requisito del taller: > 90 %).
 ```
 npm run compodoc
 ```
-Se genera en la carpeta `documentation/`.
+Se genera en la carpeta `documentation/` y se abre automáticamente en el navegador.
 
 ## URLs de consumo
 ```

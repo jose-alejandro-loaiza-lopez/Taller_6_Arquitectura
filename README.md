@@ -318,7 +318,7 @@ cd Uceva-Angular-Taller-Clean-Architecture
 npm run compodoc
 ```
 
-Genera la documentación en `documentation/` (ábrela con un servidor local, p. ej. `npx http-server documentation`).
+Genera la documentación en `documentation/` y **abre automáticamente** `index.html` en el navegador.
 
 ### Documentación Swagger / OpenAPI (backends)
 
