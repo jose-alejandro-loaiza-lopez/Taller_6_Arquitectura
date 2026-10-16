@@ -327,10 +327,19 @@ Genera la documentación en `documentation/` y **abre automáticamente** `index.
 
 ### Documentación Swagger / OpenAPI (backends)
 
-| Backend | URL de Swagger UI |
-| --- | --- |
-| Node.js | <http://localhost:3000/api/docs> |
-| Spring Boot | <http://localhost:8080/api/swagger-ui/index.html> |
+Ambos backends documentan sus **5 endpoints y sus 5 schemas de dominio**
+(`User`, `Product`, `Review`, `Rating`, `Comment`):
+
+- **Node.js** usa `swagger-jsdoc` + `swagger-ui-express`. La especificación se
+  arma desde las anotaciones `@openapi` de `src/infrastructure/web/routes/*.routes.ts`
+  y los schemas de `src/infrastructure/web/config/swagger.schemas.ts`.
+- **Spring Boot** usa `springdoc-openapi`. Los controladores (`@Tag`, `@Operation`,
+  `@Parameter`, `@ApiResponse`) y las entidades (`@Schema`) se documentan por anotaciones.
+
+| Backend | Swagger UI | OpenAPI (JSON) |
+| --- | --- | --- |
+| Node.js | <http://localhost:3000/api/docs> | — |
+| Spring Boot | <http://localhost:8080/api/swagger-ui/index.html> | <http://localhost:8080/api/v3/api-docs> |
 
 ---
 
