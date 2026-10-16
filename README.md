@@ -215,7 +215,7 @@ Abre <http://localhost:4200>. El **navbar** permite navegar por los cinco módul
 - <http://localhost:4200/ratings>
 - <http://localhost:4200/comments>
 
-> Por defecto el frontend usa la implementación **Local** (datos simulados con *faker*), por lo que funciona sin necesidad de levantar los backends.
+> Por defecto el frontend consume el backend **Node.js** (puerto `3000`), por lo que este debe estar levantado. El cambio a **Local** (datos simulados con *faker*) o a **Spring Boot** se realiza solo desde los *providers* (ver Paso 4).
 
 ---
 
@@ -225,20 +225,20 @@ El cambio de fuente de datos **no requiere tocar casos de uso ni componentes**: 
 
 Archivo: `Uceva-Angular-Taller-Clean-Architecture/src/app/app.config.ts`.
 
-Comenta el bloque **Local** y descomenta el que quieras usar:
+Comenta el bloque activo (**Node** por defecto) y descomenta el que quieras usar:
 
 ```ts
-// Local (por defecto)
-{ provide: UserRepository, useClass: UserLocalRepositoryImpl },
+// Node (por defecto) 👉 backend Node (puerto 3000)
+{ provide: UserRepository, useClass: UserNodeRepositoryImpl },
+{ provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
+// ...
+
+// Local 👉 datos simulados (no requiere levantar backends)
+// { provide: UserRepository, useClass: UserLocalRepositoryImpl },
 // { provide: ProductRepository, useClass: ProductLocalRepositoryImpl },
 // ...
 
-// Node  👉 descomentar para consumir el backend Node (puerto 3000)
-// { provide: UserRepository, useClass: UserNodeRepositoryImpl },
-// { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
-// ...
-
-// Spring Boot  👉 descomentar para consumir Spring Boot (puerto 8080)
+// Spring Boot 👉 backend Spring Boot (puerto 8080)
 // { provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
 // { provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
 // ...

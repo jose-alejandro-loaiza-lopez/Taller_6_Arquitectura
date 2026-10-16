@@ -51,25 +51,25 @@ export const appConfig: ApplicationConfig = {
   providers: [
 
     //Local Providers
-    { provide: UserRepository, useClass: UserLocalRepositoryImpl },
+    /*{ provide: UserRepository, useClass: UserLocalRepositoryImpl },
     { provide: ProductRepository, useClass: ProductLocalRepositoryImpl },
     { provide: ReviewRepository, useClass: ReviewLocalRepositoryImpl },
     { provide: RatingRepository, useClass: RatingLocalRepositoryImpl },
-    { provide: CommentRepository, useClass: CommentLocalRepositoryImpl },
+    { provide: CommentRepository, useClass: CommentLocalRepositoryImpl },*/
     
     //Node Providers
-    //{ provide: UserRepository, useClass: UserNodeRepositoryImpl },
-    //{ provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
-    //{ provide: ReviewRepository, useClass: ReviewNodeRepositoryImpl },
-    //{ provide: RatingRepository, useClass: RatingNodeRepositoryImpl },
-    //{ provide: CommentRepository, useClass: CommentNodeRepositoryImpl },
+    { provide: UserRepository, useClass: UserNodeRepositoryImpl },
+    { provide: ProductRepository, useClass: ProductNodeRepositoryImpl },
+    { provide: ReviewRepository, useClass: ReviewNodeRepositoryImpl },
+    { provide: RatingRepository, useClass: RatingNodeRepositoryImpl },
+    { provide: CommentRepository, useClass: CommentNodeRepositoryImpl },
 
     //SpringBoot Providers
-    //{ provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
-    //{ provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
-    //{ provide: ReviewRepository, useClass: ReviewSpringBootRepositoryImpl },
-    //{ provide: RatingRepository, useClass: RatingSpringBootRepositoryImpl },
-    //{ provide: CommentRepository, useClass: CommentSpringBootRepositoryImpl },
+    /*{ provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
+    { provide: ProductRepository, useClass: ProductSpringBootRepositoryImpl },
+    { provide: ReviewRepository, useClass: ReviewSpringBootRepositoryImpl },
+    { provide: RatingRepository, useClass: RatingSpringBootRepositoryImpl },
+    { provide: CommentRepository, useClass: CommentSpringBootRepositoryImpl },*/
 
     /**
      * Proveedor de listeners globales de errores del navegador.

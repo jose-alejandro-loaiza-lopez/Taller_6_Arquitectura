@@ -148,13 +148,15 @@ Disponible en <http://localhost:4200>.
 En `src/app/app.config.ts` se comenta el bloque activo y se descomenta el deseado:
 
 ```ts
-// Local (por defecto)
-{ provide: UserRepository, useClass: UserLocalRepositoryImpl },
-// Node
-// { provide: UserRepository, useClass: UserNodeRepositoryImpl },
+// Node (por defecto)
+{ provide: UserRepository, useClass: UserNodeRepositoryImpl },
+// Local
+// { provide: UserRepository, useClass: UserLocalRepositoryImpl },
 // Spring Boot
 // { provide: UserRepository, useClass: UserSpringBootRepositoryImpl },
 ```
+
+> Con **Node** (por defecto) es necesario tener levantado el backend Node.js en el puerto `3000`.
 
 URLs base en `src/environments/environment.ts`:
 ```
