@@ -119,9 +119,14 @@ npm start       # levanta Node (:3000), Spring Boot (:8080) y Angular (:4200)
 | --- | --- |
 | `npm run install:all` | Instala dependencias de Node y Angular |
 | `npm start` | Arranca Node + Spring Boot + Angular en paralelo |
-| `npm run build` | Compila el frontend Angular |
-| `npm test` | Pruebas con cobertura (Angular) |
+| `npm test` | Pruebas de Node (`node --test`), Spring Boot (`gradlew test`) y Angular (con cobertura) |
+| `npm run build` | Compila Node (`tsc`), Spring Boot (`gradlew build`) y Angular (`ng build`) |
 | `npm run compodoc` | Genera la documentación de Angular |
+
+Cada script orquestador tiene su variante por proyecto, igual que en el monorepo de
+microfrontends: `install:node` / `install:angular`, `start:node` / `start:spring` /
+`start:angular`, `test:node` / `test:spring` / `test:angular` y `build:node` /
+`build:spring` / `build:angular`.
 
 > En Windows el backend Spring Boot se lanza con `gradlew.bat bootRun`.
 

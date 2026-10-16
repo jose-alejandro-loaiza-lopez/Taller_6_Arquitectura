@@ -12,9 +12,16 @@
     "start:node": "npm --prefix Uceva-NodeJS-Taller-Clean-Architecture run start",
     "start:spring": "cd Uceva-SpringBoot-Taller-Clean-Architecture && gradlew.bat bootRun",
     "start:angular": "wait-on --timeout 300000 http://localhost:3000/api/docs http://localhost:8080/api/swagger-ui/index.html && npm --prefix Uceva-Angular-Taller-Clean-Architecture run start",
-    "test": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run test:coverage",
-    "compodoc": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run compodoc",
-    "build": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run build"
+    "test": "concurrently --names \"NODE,SPRING,ANGULAR\" \"npm:test:node\" \"npm:test:spring\" \"npm:test:angular\"",
+    "test:node": "npm --prefix Uceva-NodeJS-Taller-Clean-Architecture run test",
+    "test:spring": "cd Uceva-SpringBoot-Taller-Clean-Architecture && gradlew.bat test",
+    "test:angular": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run test:coverage",
+    "compodoc": "concurrently --names \"ANGULAR\" \"npm:compodoc:angular\"",
+    "compodoc:angular": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run compodoc",
+    "build": "concurrently --names \"NODE,SPRING,ANGULAR\" \"npm:build:node\" \"npm:build:spring\" \"npm:build:angular\"",
+    "build:node": "npm --prefix Uceva-NodeJS-Taller-Clean-Architecture run build",
+    "build:spring": "cd Uceva-SpringBoot-Taller-Clean-Architecture && gradlew.bat build",
+    "build:angular": "npm --prefix Uceva-Angular-Taller-Clean-Architecture run build"
   },
   "devDependencies": {
     "concurrently": "^9.2.5",
